@@ -1,0 +1,175 @@
+:root {
+  /* Blueprint palette */
+  --ink-navy: #0b2545;
+  --ink-navy-deep: #071a33;
+  --line-cyan: #8ecae6;
+  --line-cyan-dim: #4a6fa5;
+  --paper: #f5f3ed;
+  --paper-dim: #e8e4d8;
+  --pencil-orange: #ffb627;
+  --pencil-red: #e8590c;
+  --text-light: #e8eef5;
+  --text-muted: #9db4d1;
+  --text-dark: #0b2545;
+
+  --font-display: 'Space Grotesk', sans-serif;
+  --font-body: 'IBM Plex Sans', sans-serif;
+  --font-mono: 'IBM Plex Mono', monospace;
+
+  --grid-size: 48px;
+  --radius: 2px;
+
+  --max-width: 1180px;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+body {
+  font-family: var(--font-body);
+  background: var(--paper);
+  color: var(--text-dark);
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+}
+
+:focus-visible {
+  outline: 2px solid var(--pencil-orange);
+  outline-offset: 3px;
+}
+
+.container {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.eyebrow {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.section-title {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: clamp(1.8rem, 3.4vw, 2.6rem);
+  letter-spacing: -0.01em;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  padding: 13px 22px;
+  border-radius: var(--radius);
+  border: 1px solid transparent;
+  transition: transform 0.15s ease, background 0.15s ease, color 0.15s ease, border-color 0.15s ease;
+}
+
+.btn:active {
+  transform: translateY(1px);
+}
+
+.btn-primary {
+  background: var(--pencil-orange);
+  color: var(--ink-navy-deep);
+  border-color: var(--pencil-orange);
+}
+
+.btn-primary:hover {
+  background: #ffc656;
+}
+
+.btn-outline {
+  background: transparent;
+  color: inherit;
+  border-color: currentColor;
+}
+
+.btn-outline:hover {
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.btn-outline.on-paper:hover {
+  background: rgba(11, 37, 69, 0.06);
+}
+
+/* Blueprint grid backdrop, used behind hero + process */
+.blueprint-grid {
+  background-image:
+    linear-gradient(var(--line-cyan-dim) 1px, transparent 1px),
+    linear-gradient(90deg, var(--line-cyan-dim) 1px, transparent 1px);
+  background-size: var(--grid-size) var(--grid-size);
+  background-position: -1px -1px;
+  opacity: 0.18;
+}
+
+/* Registration crosshair mark, corner-of-sheet motif */
+.crosshair {
+  position: relative;
+  width: 18px;
+  height: 18px;
+}
+
+.crosshair::before,
+.crosshair::after {
+  content: '';
+  position: absolute;
+  background: currentColor;
+}
+
+.crosshair::before {
+  top: 50%;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  transform: translateY(-50%);
+}
+
+.crosshair::after {
+  left: 50%;
+  top: 0;
+  height: 100%;
+  width: 1px;
+  transform: translateX(-50%);
+}
