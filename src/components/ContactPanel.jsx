@@ -1,8 +1,8 @@
 import { useState } from 'react'
 
 // TODO: replace with your real WhatsApp number (country code, no + or spaces).
-const WHATSAPP_NUMBER = '2340000000000'
-const CONTACT_EMAIL = 'hello@21techspace.com'
+const WHATSAPP_NUMBER = '2348134457451'
+const CONTACT_EMAIL = 'emailtestolawale@gmail.com'
 
 const initialProject = { name: '', email: '', service: 'Web Development', details: '' }
 
