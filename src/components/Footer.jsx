@@ -9,8 +9,8 @@ export default function Footer() {
     <footer className="footer">
       <div className="container footer-inner">
         <div className="footer-brand">
-          <span className="crosshair" aria-hidden="true" />
-          <span>
+          <img src="/logo.png" alt="21TechSpace" className="footer-logo-img" />
+          <span className="footer-logo-text">
             21TECH<em>SPACE</em>
           </span>
         </div>

@@ -44,11 +44,19 @@ html {
   }
 }
 
+html, body {
+  /* Guards against any section pushing wider than the viewport on mobile —
+     this plus the navbar-links fix is what stops the sideways scroll. */
+  overflow-x: hidden;
+  width: 100%;
+}
+
 body {
   font-family: var(--font-body);
+  font-weight: 500;
   background: var(--paper);
   color: var(--text-dark);
-  line-height: 1.5;
+  line-height: 1.55;
   -webkit-font-smoothing: antialiased;
 }
 
@@ -76,19 +84,21 @@ button {
   max-width: var(--max-width);
   margin: 0 auto;
   padding: 0 24px;
+  width: 100%;
 }
 
 .eyebrow {
   font-family: var(--font-mono);
-  font-size: 0.75rem;
-  letter-spacing: 0.14em;
+  font-weight: 500;
+  font-size: 0.78rem;
+  letter-spacing: 0.13em;
   text-transform: uppercase;
 }
 
 .section-title {
   font-family: var(--font-display);
-  font-weight: 600;
-  font-size: clamp(1.8rem, 3.4vw, 2.6rem);
+  font-weight: 700;
+  font-size: clamp(1.9rem, 3.4vw, 2.7rem);
   letter-spacing: -0.01em;
 }
 
@@ -97,7 +107,8 @@ button {
   align-items: center;
   gap: 8px;
   font-family: var(--font-mono);
-  font-size: 0.8rem;
+  font-weight: 600;
+  font-size: 0.82rem;
   letter-spacing: 0.06em;
   text-transform: uppercase;
   padding: 13px 22px;
@@ -144,7 +155,7 @@ button {
   opacity: 0.18;
 }
 
-/* Registration crosshair mark, corner-of-sheet motif */
+/* Registration crosshair mark, corner-of-sheet motif (still used in hero corners) */
 .crosshair {
   position: relative;
   width: 18px;

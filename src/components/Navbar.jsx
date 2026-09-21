@@ -36,8 +36,8 @@ export default function Navbar() {
             window.scrollTo({ top: 0, behavior: 'smooth' })
           }}
         >
-          <span className="crosshair" aria-hidden="true" />
-          <span>
+          <img src="/logo.png" alt="21TechSpace" className="navbar-logo-img" />
+          <span className="navbar-logo-text">
             21TECH<em>SPACE</em>
           </span>
         </a>

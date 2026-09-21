@@ -1,16 +1,23 @@
 import { useState } from 'react'
 
-// TODO: replace with your real WhatsApp number (country code, no + or spaces)
-// and contact email before deploying.
-const WHATSAPP_NUMBER = '2348134457451'
-const CONTACT_EMAIL = 'emailtestolawale@gmail.com'
+// TODO: replace with your real WhatsApp number (country code, no + or spaces).
+const WHATSAPP_NUMBER = '2340000000000'
+const CONTACT_EMAIL = 'hello@21techspace.com'
 
 const initialProject = { name: '', email: '', service: 'Web Development', details: '' }
+
+// Netlify Forms wants application/x-www-form-urlencoded with a form-name field.
+// Only works once this site is deployed on Netlify — it's a no-op on localhost
+// (Netlify's form-handling proxy isn't there), so test the real flow on a preview deploy.
+const encodeForm = (data) =>
+  Object.keys(data)
+    .map((k) => `${encodeURIComponent(k)}=${encodeURIComponent(data[k])}`)
+    .join('&')
 
 export default function ContactPanel() {
   const [project, setProject] = useState(initialProject)
   const [projectError, setProjectError] = useState('')
-  const [projectSent, setProjectSent] = useState(false)
+  const [projectStatus, setProjectStatus] = useState('idle') // idle | sending | sent
 
   const [subEmail, setSubEmail] = useState('')
   const [subError, setSubError] = useState('')
@@ -18,7 +25,7 @@ export default function ContactPanel() {
 
   const isValidEmail = (value) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value)
 
-  const handleProjectSubmit = (e) => {
+  const handleProjectSubmit = async (e) => {
     e.preventDefault()
     if (!project.name.trim() || !project.email.trim() || !project.details.trim()) {
       setProjectError('Fill in your name, email and a short project description.')
@@ -29,14 +36,21 @@ export default function ContactPanel() {
       return
     }
     setProjectError('')
+    setProjectStatus('sending')
 
-    const body = `Name: ${project.name}\nEmail: ${project.email}\nService: ${project.service}\n\n${project.details}`
-    window.location.href = `mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent(
-      `New project inquiry — ${project.service}`
-    )}&body=${encodeURIComponent(body)}`
-
-    setProjectSent(true)
-    setProject(initialProject)
+    try {
+      const res = await fetch('/', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: encodeForm({ 'form-name': 'contact', ...project }),
+      })
+      if (!res.ok) throw new Error('Request failed')
+      setProjectStatus('sent')
+      setProject(initialProject)
+    } catch {
+      setProjectStatus('idle')
+      setProjectError('Could not send right now — try WhatsApp instead, or email us directly.')
+    }
   }
 
   const handleWhatsAppProject = () => {
@@ -51,13 +65,22 @@ export default function ContactPanel() {
     window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(text)}`, '_blank')
   }
 
-  const handleSubscribe = (e) => {
+  const handleSubscribe = async (e) => {
     e.preventDefault()
     if (!isValidEmail(subEmail)) {
       setSubError('Enter a valid email address.')
       return
     }
     setSubError('')
+    try {
+      await fetch('/', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: encodeForm({ 'form-name': 'subscribe', email: subEmail }),
+      })
+    } catch {
+      // subscribe is best-effort — don't block the success state on it
+    }
     setSubSent(true)
     setSubEmail('')
   }
@@ -125,16 +148,15 @@ export default function ContactPanel() {
             </label>
 
             {projectError && <p className="form-error">{projectError}</p>}
-            {projectSent && (
+            {projectStatus === 'sent' && (
               <p className="form-success">
-                Your email client should have opened with the details filled in — send it
-                over and we&rsquo;ll be in touch.
+                Sent — we&rsquo;ll get back to you shortly.
               </p>
             )}
 
             <div className="form-actions">
-              <button type="submit" className="btn btn-primary">
-                Send by Email
+              <button type="submit" className="btn btn-primary" disabled={projectStatus === 'sending'}>
+                {projectStatus === 'sending' ? 'Sending…' : 'Send Message'}
               </button>
               <button type="button" className="btn btn-outline on-paper" onClick={handleWhatsAppProject}>
                 Send on WhatsApp

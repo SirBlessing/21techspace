@@ -3,10 +3,11 @@
   position: sticky;
   top: 0;
   z-index: 50;
-  background: rgba(245, 243, 237, 0.88);
+  background: rgba(245, 243, 237, 0.92);
   backdrop-filter: blur(8px);
   border-bottom: 1px solid transparent;
   transition: border-color 0.2s ease, background 0.2s ease;
+  overflow-x: hidden;
 }
 
 .navbar-scrolled {
@@ -16,33 +17,68 @@
 .navbar-inner {
   display: flex;
   align-items: center;
-  gap: 24px;
-  padding-top: 16px;
-  padding-bottom: 16px;
+  gap: 16px;
+  padding-top: 14px;
+  padding-bottom: 14px;
+  max-width: 100%;
 }
 
 .navbar-logo {
   display: flex;
   align-items: center;
-  gap: 10px;
-  font-family: var(--font-display);
-  font-weight: 700;
-  font-size: 1.05rem;
-  letter-spacing: 0.02em;
-  color: var(--ink-navy);
+  gap: 6px;
+  flex-shrink: 0;
 }
 
-.navbar-logo em {
+.navbar-logo-img {
+  height: 48px;
+  width: auto;
+  display: block;
+}
+
+.navbar-logo-text {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1.15rem;
+  letter-spacing: 0.01em;
+  color: var(--ink-navy);
+  white-space: nowrap;
+}
+
+.navbar-logo-text em {
   font-style: normal;
   color: var(--pencil-red);
 }
 
+.footer-logo-img {
+  height: 40px;
+  width: auto;
+  display: block;
+  filter: brightness(0) invert(1);
+}
+
+.footer-logo-text {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1.1rem;
+  color: var(--text-light);
+}
+
+.footer-logo-text em {
+  font-style: normal;
+  color: var(--pencil-red);
+}
+
+/* Links are desktop-only: this was the mobile overflow bug — the inline
+   link row had no display:none, so it forced the navbar wider than the
+   viewport and the whole page could scroll sideways. */
 .navbar-links {
-  display: flex;
+  display: none;
   gap: 28px;
   margin-left: auto;
   font-family: var(--font-mono);
-  font-size: 0.82rem;
+  font-size: 0.85rem;
+  font-weight: 500;
 }
 
 .navbar-links a {
@@ -76,6 +112,8 @@
   background: none;
   border: none;
   padding: 6px;
+  margin-left: auto;
+  flex-shrink: 0;
 }
 
 .navbar-toggle span {
@@ -91,7 +129,8 @@
   padding: 8px 24px 24px;
   border-top: 1px solid var(--paper-dim);
   font-family: var(--font-mono);
-  font-size: 0.9rem;
+  font-size: 0.95rem;
+  font-weight: 500;
 }
 
 .navbar-mobile .btn {
@@ -99,6 +138,9 @@
 }
 
 @media (min-width: 860px) {
+  .navbar-links {
+    display: flex;
+  }
   .navbar-cta {
     display: inline-flex;
   }
@@ -143,6 +185,7 @@
 .hero-tag {
   color: var(--line-cyan);
   margin-bottom: 28px;
+  font-weight: 600;
 }
 
 .hero-title {
@@ -161,13 +204,15 @@
 .hero-subtitle {
   margin-top: 24px;
   color: var(--pencil-orange);
-  font-size: 0.9rem;
+  font-size: 0.95rem;
+  font-weight: 700;
 }
 
 .hero-desc {
   margin-top: 20px;
   max-width: 42ch;
-  font-size: 1.05rem;
+  font-size: 1.1rem;
+  font-weight: 500;
   color: var(--text-muted);
 }
 
@@ -203,17 +248,19 @@
 
 .trustbar-index {
   color: var(--line-cyan-dim);
+  font-weight: 600;
 }
 
 .trustbar-value {
   font-family: var(--font-display);
-  font-weight: 600;
-  font-size: 1.15rem;
+  font-weight: 700;
+  font-size: 1.2rem;
 }
 
 .trustbar-label {
   color: var(--text-muted);
   margin-top: 2px;
+  font-weight: 600;
 }
 
 @media (min-width: 700px) {
@@ -226,6 +273,7 @@
 .section-eyebrow {
   color: var(--line-cyan-dim);
   margin-bottom: 14px;
+  font-weight: 600;
 }
 
 .services,
@@ -264,24 +312,27 @@
 
 .service-code {
   color: var(--pencil-red);
+  font-weight: 600;
 }
 
 .service-title {
   font-family: var(--font-display);
-  font-weight: 600;
-  font-size: 1.15rem;
+  font-weight: 700;
+  font-size: 1.2rem;
 }
 
 .service-summary {
   color: var(--text-dark);
-  opacity: 0.75;
-  font-size: 0.95rem;
+  opacity: 0.8;
+  font-size: 0.98rem;
+  font-weight: 500;
 }
 
 .service-detail {
-  font-size: 0.92rem;
+  font-size: 0.95rem;
+  font-weight: 500;
   color: var(--text-dark);
-  opacity: 0.7;
+  opacity: 0.75;
   border-top: 1px dashed var(--paper-dim);
   padding-top: 12px;
 }
@@ -295,7 +346,8 @@
   background: none;
   border: none;
   font-family: var(--font-mono);
-  font-size: 0.78rem;
+  font-size: 0.8rem;
+  font-weight: 600;
   letter-spacing: 0.06em;
   text-transform: uppercase;
   color: var(--ink-navy);
@@ -359,19 +411,21 @@
 
 .process-step-n {
   color: var(--pencil-orange);
-  font-size: 1rem;
+  font-size: 1.05rem;
+  font-weight: 700;
 }
 
 .process-step-title {
   font-family: var(--font-display);
-  font-weight: 600;
-  font-size: 1.2rem;
+  font-weight: 700;
+  font-size: 1.25rem;
   margin: 14px 0 10px;
 }
 
 .process-step-desc {
   color: var(--text-muted);
   max-width: 34ch;
+  font-weight: 500;
 }
 
 .process-step-line {
@@ -386,13 +440,14 @@
 .process-cta-line {
   font-family: var(--font-display);
   font-size: 1.3rem;
-  font-weight: 500;
+  font-weight: 600;
 }
 
 .process-cta-line-muted {
   color: var(--text-muted);
-  font-size: 1rem;
+  font-size: 1.02rem;
   font-family: var(--font-body);
+  font-weight: 500;
   margin: 8px 0 28px;
 }
 
@@ -420,13 +475,14 @@
 
 .about-lead {
   margin-top: 22px;
-  font-size: 1.02rem;
+  font-size: 1.05rem;
+  font-weight: 500;
   max-width: 46ch;
 }
 
 .about-lead-muted {
   color: var(--text-muted);
-  opacity: 0.85;
+  opacity: 0.9;
 }
 
 .about-list {
@@ -446,19 +502,21 @@
 .about-list-index {
   color: var(--line-cyan-dim);
   padding-top: 4px;
+  font-weight: 600;
 }
 
 .about-list-title {
   font-family: var(--font-display);
-  font-weight: 600;
-  font-size: 1.02rem;
+  font-weight: 700;
+  font-size: 1.05rem;
   margin-bottom: 6px;
 }
 
 .about-list-desc {
   color: var(--text-dark);
-  opacity: 0.72;
-  font-size: 0.93rem;
+  opacity: 0.78;
+  font-size: 0.96rem;
+  font-weight: 500;
 }
 
 @media (min-width: 960px) {
@@ -523,6 +581,7 @@
 
 .project-form .eyebrow {
   color: var(--line-cyan-dim);
+  font-weight: 600;
 }
 
 .project-form input,
@@ -530,7 +589,8 @@
 .project-form textarea,
 .subscribe-row input {
   font-family: var(--font-body);
-  font-size: 0.95rem;
+  font-size: 0.98rem;
+  font-weight: 500;
   padding: 11px 12px;
   border: 1px solid var(--paper-dim);
   border-radius: var(--radius);
@@ -554,12 +614,14 @@
 
 .form-error {
   color: var(--pencil-red);
-  font-size: 0.86rem;
+  font-size: 0.88rem;
+  font-weight: 500;
 }
 
 .form-success {
   color: #1b7a3d;
-  font-size: 0.86rem;
+  font-size: 0.88rem;
+  font-weight: 500;
 }
 
 .contact-side {
@@ -581,12 +643,14 @@
   color: var(--line-cyan-dim);
   margin-bottom: 12px;
   display: block;
+  font-weight: 600;
 }
 
 .contact-side-link {
   display: block;
   font-family: var(--font-mono);
-  font-size: 0.9rem;
+  font-size: 0.92rem;
+  font-weight: 500;
   padding: 8px 0;
   border-bottom: 1px dashed var(--paper-dim);
 }
@@ -600,8 +664,9 @@
 }
 
 .subscribe-desc {
-  font-size: 0.88rem;
-  opacity: 0.7;
+  font-size: 0.9rem;
+  font-weight: 500;
+  opacity: 0.75;
   margin-bottom: 14px;
 }
 
@@ -612,6 +677,7 @@
 
 .subscribe-row input {
   flex: 1;
+  min-width: 0;
 }
 
 @media (min-width: 960px) {
@@ -638,22 +704,15 @@
 .footer-brand {
   display: flex;
   align-items: center;
-  gap: 10px;
-  font-family: var(--font-display);
-  font-weight: 700;
-  color: var(--text-light);
-}
-
-.footer-brand em {
-  font-style: normal;
-  color: var(--pencil-red);
+  gap: 6px;
 }
 
 .footer-socials {
   display: flex;
   gap: 20px;
   font-family: var(--font-mono);
-  font-size: 0.82rem;
+  font-size: 0.85rem;
+  font-weight: 500;
 }
 
 .footer-socials a:hover {
@@ -662,5 +721,45 @@
 
 .footer-meta {
   color: var(--text-muted);
-  opacity: 0.7;
+  opacity: 0.75;
+  font-weight: 500;
+}
+
+/* ===== Mobile spacing tightening ===== */
+@media (max-width: 700px) {
+  .hero {
+    padding: 72px 0 64px;
+  }
+  .trustbar-inner {
+    padding: 24px 20px;
+    gap: 20px 16px;
+  }
+  .services,
+  .about,
+  .process,
+  .contact {
+    padding: 56px 0;
+  }
+  .services .section-title,
+  .process-title,
+  .about-title,
+  .contact-title {
+    margin-bottom: 32px;
+  }
+  .process-steps {
+    margin: 36px 0 40px;
+    gap: 28px;
+  }
+  .process-cta {
+    padding-top: 28px;
+  }
+  .about-grid {
+    gap: 32px;
+  }
+  .about-list {
+    gap: 20px;
+  }
+  .contact-body {
+    gap: 24px;
+  }
 }
