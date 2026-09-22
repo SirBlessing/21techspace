@@ -762,4 +762,116 @@
   .contact-body {
     gap: 24px;
   }
+  .navbar-logo-text {
+    font-size: 0.95rem;
+  }
+  .navbar-logo-img {
+    height: 38px;
+  }
+}
+
+/* ===== Portfolio ===== */
+.portfolio {
+  padding: 96px 0;
+  background: var(--paper-dim);
+}
+
+.portfolio-title {
+  margin-bottom: 48px;
+}
+
+.portfolio-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 24px;
+}
+
+.portfolio-card {
+  background: #fff;
+  border: 1px solid rgba(11, 37, 69, 0.12);
+  border-radius: var(--radius);
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.portfolio-thumb {
+  position: relative;
+  height: 160px;
+  overflow: hidden;
+  border-radius: var(--radius);
+  background-image:
+    linear-gradient(var(--line-cyan-dim) 1px, transparent 1px),
+    linear-gradient(90deg, var(--line-cyan-dim) 1px, transparent 1px);
+  background-size: 24px 24px;
+  background-color: var(--ink-navy);
+}
+
+.portfolio-thumb-img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.portfolio-tag {
+  color: var(--pencil-red);
+  font-weight: 600;
+  margin-top: 6px;
+}
+
+.portfolio-card-title {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1.1rem;
+}
+
+.portfolio-card-desc {
+  color: var(--text-dark);
+  opacity: 0.75;
+  font-size: 0.95rem;
+  font-weight: 500;
+}
+
+.portfolio-link {
+  margin-top: auto;
+  align-self: flex-start;
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  color: var(--ink-navy);
+  padding-top: 6px;
+}
+
+.portfolio-link:hover {
+  color: var(--pencil-red);
+}
+
+.portfolio-link-soon {
+  color: var(--text-muted);
+  opacity: 0.8;
+}
+
+@media (min-width: 700px) {
+  .portfolio-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1000px) {
+  .portfolio-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 700px) {
+  .portfolio {
+    padding: 56px 0;
+  }
+  .portfolio-title {
+    margin-bottom: 32px;
+  }
 }

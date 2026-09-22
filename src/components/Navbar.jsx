@@ -4,7 +4,7 @@ const LINKS = [
   { label: 'Services', href: '#services' },
   { label: 'How It Works', href: '#process' },
   { label: 'About', href: '#about' },
-  { label: 'Portfolio', href: 'https://amureamure03.wixsite.com/21techspace/portfolio' },
+  { label: 'Portfolio', href: '#portfolio' },
 ]
 
 export default function Navbar() {

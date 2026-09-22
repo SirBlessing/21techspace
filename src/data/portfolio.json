@@ -1,0 +1,10 @@
+[
+  {
+    "code": "PRJ-01",
+    "title": "BSS GYM WEB APP",
+    "tag": "Web App",
+    "desc": "Membership management, an integrated store, and online booking for a real gym, built to replace front-desk paperwork with a self-serve platform.",
+    "image": "/portfolio/bssgym.jpg",
+    "url": "https://gymbss.online/"
+  }
+]

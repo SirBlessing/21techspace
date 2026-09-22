@@ -1,8 +1,8 @@
 import { useState } from 'react'
 
 // TODO: replace with your real WhatsApp number (country code, no + or spaces).
-const WHATSAPP_NUMBER = '2348021292388'
-const CONTACT_EMAIL = '21technologyspace@gmail.com'
+const WHATSAPP_NUMBER = '2340000000000'
+const CONTACT_EMAIL = 'hello@21techspace.com'
 
 const initialProject = { name: '', email: '', service: 'Web Development', details: '' }
 
@@ -90,7 +90,7 @@ export default function ContactPanel() {
       <div className="blueprint-grid contact-grid" aria-hidden="true" />
       <div className="container contact-inner">
         <div className="contact-header">
-          <p className="eyebrow section-eyebrow contact-eyebrow">SHEET 05 / START A PROJECT</p>
+          <p className="eyebrow section-eyebrow contact-eyebrow">SHEET 06 / START A PROJECT</p>
           <h2 className="section-title contact-title">
             Ready to build something incredible? Let&rsquo;s talk.
           </h2>
