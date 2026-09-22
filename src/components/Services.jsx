@@ -6,7 +6,7 @@ const SERVICES = [
     title: 'Web Development',
     summary: 'Modern, responsive and fast websites that convert visitors to customers.',
     detail:
-      'Built on performance-first foundations — clean semantic markup, optimized assets, and layouts tuned for conversion. Every site ships mobile-first and measured against real load-time targets, not guesses.',
+      'Built on performance-first foundations  clean semantic markup, optimized assets, and layouts tuned for conversion. Every site ships mobile-first and measured against real load-time targets, not guesses.',
   },
   {
     code: 'WEB-02',
@@ -34,7 +34,7 @@ const SERVICES = [
     title: 'Web Based App Development',
     summary: 'Powerful web applications and platforms built for performance.',
     detail:
-      'Full-stack platforms — auth, data, real-time features, the works — architected to stay fast as your user base and your feature set both grow.',
+      'Full-stack platforms  auth, data, real-time features, the works  architected to stay fast as your user base and your feature set both grow.',
   },
   {
     code: 'UX-01',
