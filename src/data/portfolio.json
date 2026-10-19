@@ -6,5 +6,21 @@
     "desc": "Membership management, an integrated store, and online booking for a real gym, built to replace front-desk paperwork with a self-serve platform.",
     "image": "/portfolio/bssgym.jpg",
     "url": "https://gymbss.online/"
+  },
+   {
+    "code": "PRJ-02",
+    "title": "StritBuy WEB APP",
+    "tag": "Web App",
+    "desc": "Your street is open for business Real shops in your area, with real prices. Find it, call it, collect it.",
+    "image": "/portfolio/stritbuy.jpg",
+    "url": "https://stritbuy.com/"
+  },
+   {
+    "code": "PRJ-03",
+    "title": "288Meal WEB APP",
+    "tag": "Web App",
+    "desc": "Your food can be ready before you arrive walk in • pick up your order • no queue • no waiting.",
+    "image": "/portfolio/288meal.jpg",
+    "url": "https://288meal.com/"
   }
 ]
